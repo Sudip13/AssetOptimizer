@@ -203,6 +203,27 @@ class MESH_OT_generate_lods(Operator):
                         lod_collection = bpy.data.collections.new(collection_name)
                         context.scene.collection.children.link(lod_collection)
                 
+                # For Unity, rename original object first to free up the base name
+                if self.target_engine == 'UNITY':
+                    original_obj.name = f"{base_name}_temp"
+                
+                # Create root empty for Unity LOD Group (only for Unity)
+                lod_root = None
+                if self.target_engine == 'UNITY':
+                    lod_root = bpy.data.objects.new(base_name, None)
+                    lod_root.empty_display_type = 'PLAIN_AXES'
+                    lod_root.empty_display_size = 1.0
+                    
+                    if self.create_collection:
+                        lod_collection.objects.link(lod_root)
+                    else:
+                        context.collection.objects.link(lod_root)
+                    
+                    # Copy original transform
+                    lod_root.location = original_obj.location
+                    lod_root.rotation_euler = original_obj.rotation_euler
+                    lod_root.scale = original_obj.scale
+                
                 lod_objects = []
                 lod0_object = None
                 
@@ -270,8 +291,13 @@ class MESH_OT_generate_lods(Operator):
                                 collapse_mod.use_collapse_triangulate = True
                                 bpy.ops.object.modifier_apply(modifier=collapse_mod.name)
                     
-                    # Parent LOD1+ to LOD0
-                    if lod_level > 0 and lod0_object:
+                    # Parent LODs based on target engine
+                    if self.target_engine == 'UNITY' and lod_root:
+                        # For Unity: Parent all LODs to root empty
+                        lod_obj.parent = lod_root
+                        lod_obj.matrix_parent_inverse = lod_root.matrix_world.inverted()
+                    elif lod_level > 0 and lod0_object:
+                        # For Unreal/Collection: Parent LOD1+ to LOD0
                         lod_obj.parent = lod0_object
                         lod_obj.matrix_parent_inverse = lod0_object.matrix_world.inverted()
                     
