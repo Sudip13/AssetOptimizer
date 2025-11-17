@@ -1,7 +1,7 @@
 bl_info = {
     "name": "VR Asset Optimizer",
     "author": "Sudip Soni",
-    "version": (2, 0, 0),
+    "version": (1, 0, 1),
     "blender": (3, 0, 0),
     "location": "View3D > Sidebar > VR Assets",
     "description": "Complete VR asset optimization toolkit - mesh decimation, LOD generation, dual UV unwrap, and CAD model optimization for Unity and Unreal Engine",
