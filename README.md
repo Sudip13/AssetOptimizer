@@ -1,10 +1,12 @@
-# VR Asset Optimizer - Blender Addon
+# Asset Optimizer - Blender Extension
 
 **Developer**: [Sudip Soni](https://github.com/Sudip13)  
-**Version**: 2.0.0  
-**Repository**: [https://github.com/Sudip13/AssetOptimizer](https://github.com/Sudip13/AssetOptimizer)
+**Version**: 1.0.1  
+**Repository**: [https://github.com/Sudip13/AssetOptimizer](https://github.com/Sudip13/AssetOptimizer)  
+**Blender**: 4.2.0+  
+**License**: GPL-3.0-or-later
 
-A comprehensive Blender addon for optimizing 3D assets for VR applications in Unity and Unreal Engine. This toolkit combines mesh decimation, LOD generation, dual UV unwrapping, and CAD model cleanup into a streamlined workflow.
+A comprehensive Blender extension for optimizing 3D assets for game development in Unity and Unreal Engine. This toolkit combines mesh decimation, LOD generation, dual UV unwrapping, and CAD model cleanup into a streamlined workflow.
 
 ---
 
@@ -48,21 +50,26 @@ A comprehensive Blender addon for optimizing 3D assets for VR applications in Un
 
 ## Installation
 
-### Method 1: Download and Install
-1. Download this repository as a ZIP file
-2. Open Blender (3.0 or later)
-3. Go to `Edit > Preferences > Add-ons`
-4. Click `Install...` and select the downloaded ZIP file
-5. Enable "VR Asset Optimizer" by checking the box
+### From Blender Extensions (Recommended)
+1. Open Blender 4.2 or later
+2. Go to `Edit > Preferences > Extensions`
+3. Search for "Asset Optimizer"
+4. Click `Install` and enable the extension
 
-### Method 2: Manual Installation
-1. Download/clone this repository
-2. Copy the entire `AssetOptimizer` folder to your Blender addons directory:
-   - **Windows**: `%APPDATA%\Blender Foundation\Blender\[version]\scripts\addons\`
-   - **macOS**: `~/Library/Application Support/Blender/[version]/scripts/addons/`
-   - **Linux**: `~/.config/blender/[version]/scripts/addons/`
-3. Restart Blender
-4. Enable the addon in `Preferences > Add-ons`
+### From Disk (Local Testing)
+1. Download `asset_optimizer-1.0.1.zip` from releases
+2. Open Blender 4.2 or later
+3. Go to `Edit > Preferences > Extensions`
+4. Click the dropdown (⌄) > `Install from Disk...`
+5. Select the downloaded ZIP file
+6. Enable "Asset Optimizer" extension
+
+### Build from Source
+```bash
+git clone https://github.com/Sudip13/AssetOptimizer.git
+cd AssetOptimizer
+blender --command extension build
+```
 
 ---
 
@@ -168,9 +175,10 @@ AssetOptimizer/
 ```
 
 ### Compatibility
-- **Blender Version**: 3.0+ (4.x compatible)
+- **Blender Version**: 4.2.0 or later (Extension format)
 - **Mode Requirements**: Works in Object mode
 - **Object Types**: Mesh objects only
+- **Platforms**: Windows, macOS, Linux
 
 ### UV Layer Naming
 - **UV0**: `UVMap` (texturing)
@@ -290,20 +298,22 @@ AssetOptimizer/
 
 ## Changelog
 
-### Version 2.0.0
-- ✨ Complete rewrite with modular architecture
-- ✨ Added batch optimization presets
+### Version 1.0.1 (Current)
+- 🎉 Converted to Blender Extension format (4.2+)
+- 📦 Renamed to "Asset Optimizer" (broader scope)
+- 📜 Updated to GPL-3.0-or-later license
+- ✅ Full compliance with extensions.blender.org guidelines
+- 🔧 Minor bug fixes and improvements
+
+### Version 1.0.0 (Legacy)
+- ✨ Complete modular architecture
+- ✨ Batch optimization presets
 - ✨ Enhanced dual UV system with multiple unwrap methods
 - ✨ LOD generation with Unity/Unreal naming conventions
 - ✨ Smart vertex merging with edge preservation
 - ✨ Comprehensive UI with selection info and tips
 - ✨ Advanced settings panel
 - ✨ Multi-object processing for all operations
-
-### Version 1.4.0 (Legacy)
-- Basic multi-object UV unwrap
-- Smart UV projection
-- Island packing
 
 ---
 
@@ -322,7 +332,21 @@ Contributions are welcome! Please feel free to submit issues, feature requests, 
 
 ## License
 
-This addon is provided as-is for educational and commercial use. Feel free to modify and distribute according to your needs.
+This extension is licensed under the GNU General Public License v3.0 or later (GPL-3.0-or-later).
+
+You are free to:
+- ✅ Use commercially
+- ✅ Modify and distribute
+- ✅ Use privately
+- ✅ Patent use
+
+Under the conditions:
+- 📝 Disclose source
+- 📜 Include license and copyright
+- 📋 State changes
+- 🔓 Same license (copyleft)
+
+See [LICENSE](LICENSE) file for full details.
 
 ---
 
@@ -342,4 +366,4 @@ This addon is provided as-is for educational and commercial use. Feel free to mo
 
 ---
 
-**Made with ❤️ by [Sudip Soni](https://github.com/Sudip13) for the VR development community**
+**Made with ❤️ by [Sudip Soni](https://github.com/Sudip13) for the game development community**
